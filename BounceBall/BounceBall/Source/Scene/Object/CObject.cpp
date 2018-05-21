@@ -20,15 +20,30 @@ CObject::~CObject()
 
 bool CObject::Init()
 {
+	for (m_it = m_ComponentTable.begin(); m_it != m_ComponentTable.end(); ++m_it) {
+		m_it->second->Init();
+	}
+
+
 	return true;
 }
 
 void CObject::Update()
 {
+	for (m_it = m_ComponentTable.begin(); m_it != m_ComponentTable.end(); ++m_it) {
+		m_it->second->Update();
+	}
+
+
 }
 
 void CObject::Render()
 {
+	for (m_it = m_ComponentTable.begin(); m_it != m_ComponentTable.end(); ++m_it) {
+		m_it->second->Render();
+	}
+
+
 }
 
 ComponentBase * CObject::GetComponent(const Types::tstring & tag)
