@@ -22,7 +22,13 @@ CScene::~CScene()
 
 bool CScene::Init()
 {
-	return false;
+	if (!m_LayerList.empty())
+		for (m_it = m_LayerList.begin(); m_it != m_LayerList.end(); ++m_it) {
+			(*m_it)->Init();
+
+		}
+
+	return true;
 }
 
 void CScene::Update()
@@ -35,16 +41,18 @@ void CScene::Update()
 
 }
 
-void CScene::Render()
+void CScene::Render(const HDC& hDC)
 {
 	if (!m_LayerList.empty())
 		for (m_it = m_LayerList.begin(); m_it != m_LayerList.end(); ++m_it) {
-			(*m_it)->Render();
+			(*m_it)->Render(hDC);
 
 
 		}
 }
 
+//CLayer 클래스의 friend 메소드.
+//CreateLayer메소드를 통해서만 Layer 생성이 가능하게끔 만든다.
 bool CScene::CreateLayer(const Types::tstring & tag, int order)
 {
 	if (FindLayer(tag))

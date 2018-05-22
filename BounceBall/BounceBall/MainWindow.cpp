@@ -24,6 +24,8 @@ bool MainWindow::Init(HINSTANCE hInstance, UINT width, UINT height)
 	if (!InitWndClass())
 		return false;
 
+	m_hDC = GetDC(m_hWnd);
+
 	if (m_pSceneManager == nullptr)
 		m_pSceneManager = CSceneManager::GetInstance();
 
@@ -45,13 +47,14 @@ void MainWindow::Update()
 
 void MainWindow::Render()
 {
-	m_pSceneManager->Render();
+	m_pSceneManager->Render(m_hDC);
 
 
 }
 
 void MainWindow::GameLogic()
 {
+	//MessageBox(NULL, TEXT("GameLogic"), TEXT("Info"), MB_ICONINFORMATION);
 	Update();
 	Render();
 }

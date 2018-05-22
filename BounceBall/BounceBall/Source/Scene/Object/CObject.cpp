@@ -3,8 +3,13 @@
 
 
 
-CObject::CObject()
+CObject::CObject(Types::ObjectType type, Types::ObjectState state, 
+	Types::Direction dir, Types::Point point)
+	:m_ObjectType(type), m_ObjectState(state), m_ObjectDirection(dir),
+	m_fObjectPoint(point)
 {
+
+
 }
 
 CObject::~CObject()
@@ -20,8 +25,9 @@ CObject::~CObject()
 
 bool CObject::Init()
 {
+
 	for (m_it = m_ComponentTable.begin(); m_it != m_ComponentTable.end(); ++m_it) {
-		m_it->second->Init();
+		m_it->second->Init(this);
 	}
 
 
@@ -30,21 +36,23 @@ bool CObject::Init()
 
 void CObject::Update()
 {
+
 	for (m_it = m_ComponentTable.begin(); m_it != m_ComponentTable.end(); ++m_it) {
+		//MessageBox(NULL, TEXT("ObjectUpdate1"), TEXT("Info"), MB_ICONINFORMATION);
 		m_it->second->Update();
 	}
 
 
 }
 
-void CObject::Render()
-{
-	for (m_it = m_ComponentTable.begin(); m_it != m_ComponentTable.end(); ++m_it) {
-		m_it->second->Render();
-	}
-
-
-}
+//void CObject::Render()
+//{
+//	for (m_it = m_ComponentTable.begin(); m_it != m_ComponentTable.end(); ++m_it) {
+//		m_it->second->Render();
+//	}
+//
+//
+//}
 
 ComponentBase * CObject::GetComponent(const Types::tstring & tag)
 {
@@ -57,10 +65,22 @@ ComponentBase * CObject::GetComponent(const Types::tstring & tag)
 
 bool CObject::AddComponent(const Types::tstring & tag, ComponentBase * component)
 {
-	if (m_it == m_ComponentTable.end()) {
+	if (GetComponent(tag) == nullptr) {
 		m_ComponentTable.insert(std::make_pair(tag, component));
 		return true;
 	}
 
 	return false;
+}
+
+bool CObject::DeleteComponent(const Types::tstring & tag){
+
+	ComponentBase* component = GetComponent(tag);
+	if (component == nullptr)
+		return false;
+
+	SAFE_DELETE(component)
+	m_ComponentTable.erase(m_it);
+
+	return true;
 }

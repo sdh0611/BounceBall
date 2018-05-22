@@ -29,9 +29,9 @@ void CSceneManager::Update()
 	m_pScene->Update();
 }
 
-void CSceneManager::Render()
+void CSceneManager::Render(const HDC& hDC)
 {
-	m_pScene->Render();
+	m_pScene->Render(hDC);
 }
 
 bool CSceneManager::CreateScene(Types::SceneType type)

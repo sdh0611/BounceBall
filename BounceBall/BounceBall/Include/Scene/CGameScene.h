@@ -15,7 +15,7 @@ public:
 public:
 	virtual bool Init();
 	virtual void Update();
-	virtual void Render();
+	virtual void Render(const HDC& hDC);
 
 
 private:

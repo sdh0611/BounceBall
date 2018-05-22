@@ -11,8 +11,8 @@ namespace Types {
 
 		float x, y;
 
-		Point(float nx, float ny) :x(nx), y(ny) {		}
-		~Point() = default;
+		Point(float nx = 0.f, float ny = 0.f) :x(nx), y(ny) {		}
+		~Point() { };
 
 		bool operator ==(const Point& other) {
 			if (this->x == other.x && this->y == other.y)
@@ -44,7 +44,7 @@ namespace Types {
 		}
 
 	};
-
+	   
 	//오브젝트 타입 정의
 	enum ObjectType { OT_PLAYER, OT_ENEMY, OT_PROBS, OT_PICKUP, OT_MAP };
 
@@ -52,7 +52,7 @@ namespace Types {
 	enum ObjectState { OS_IDLE, OS_MOVE, OS_ATTACK, OS_DAMAGED, OS_FALL };
 
 	//방향 열거체 정의
-	enum Direction { DIR_DOWN = -1, DIR_IDLE, DIR_Up, DIR_LEFT, DIR_RIGHT };
+	enum Direction { DIR_DOWN = -1, DIR_IDLE, DIR_UP, DIR_LEFT, DIR_RIGHT };
 
 	enum SceneType { ST_TITLE, ST_GAME, ST_SELECT };
 

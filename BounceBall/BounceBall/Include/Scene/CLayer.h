@@ -2,20 +2,31 @@
 
 
 #include "..\..\stdafx.h"
+#include "CScene.h"
 
 class CObject;
 
 class CLayer {
+	//CScene의 CreateLayer 메소드를 통해서만 생성할 수 있게 함.
+	friend bool CScene::CreateLayer(const Types::tstring& tag, int order);
+	
+private:
+	CLayer(int order, const Types::tstring& tag);
+
 
 public:
-	CLayer(int order, const Types::tstring& tag);
 	~CLayer();
 
 
 public:
 	bool Init();
 	void Update();
-	void Render();
+	void Render(const HDC& hDC);
+
+
+public:
+	void AddObjectToLayer(CObject* object);
+	bool DeleteObjectFromLayer(CObject * object);
 
 
 public:
@@ -23,7 +34,6 @@ public:
 	inline void SetLayerTag(const Types::tstring& tag) { m_strLayerTag = tag; }
 	inline int GetLayerOrder() { return m_iOrder; }
 	inline void SetLayerOrder(int order) { if (order >= 0) m_iOrder = order; }
-
 
 private:
 

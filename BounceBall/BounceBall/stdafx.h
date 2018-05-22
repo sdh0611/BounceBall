@@ -12,3 +12,4 @@
 
 
 #define SAFE_DELETE(ptr) if(ptr != nullptr){ delete ptr; ptr = nullptr; }
+#define KEY_DOWN(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 1 : 0)
