@@ -13,8 +13,8 @@ public:
 
 public:
 	virtual bool Init();
-	virtual void Update();
-	virtual void Render();
+	virtual void Update(const double& deltaTime);
+	virtual void Render(const HDC& hDC);
 
 
 public:
@@ -29,7 +29,7 @@ private:
 	void SortLayer() { m_LayerList.sort(CompareLayer); }
 
 
-private:
+protected:
 	Types::SceneType					m_SceneType;
 	std::list<CLayer*>					m_LayerList;
 	std::list<CLayer*>::iterator		m_it;

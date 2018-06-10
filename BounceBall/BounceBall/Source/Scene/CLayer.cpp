@@ -31,18 +31,37 @@ bool CLayer::Init()
 	return true;
 }
 
-void CLayer::Update()
+void CLayer::Update(const double& deltaTime)
 {
 	if (!m_ObjectList.empty())
 		for (m_it = m_ObjectList.begin(); m_it != m_ObjectList.end(); ++m_it) {
-			(*m_it)->Update();
+			(*m_it)->Update(deltaTime);
 		}
 }
 
-void CLayer::Render()
+void CLayer::Render(const HDC& hDC)
 {
 	if (!m_ObjectList.empty())
 		for (m_it = m_ObjectList.begin(); m_it != m_ObjectList.end(); ++m_it) {
-			(*m_it)->Render();
+			(*m_it)->Render(hDC);
 		}
+}
+
+void CLayer::AddObjectToLayer(CObject * object)
+{
+	m_ObjectList.push_back(object);
+}
+
+bool CLayer::DeleteObjectFromLayer(CObject * object)
+{
+	if( !m_ObjectList.empty() )
+		for (m_it = m_ObjectList.begin(); m_it != m_ObjectList.end(); ++m_it) {
+			if ((*m_it) == object) {
+				SAFE_DELETE((*m_it))
+				m_ObjectList.erase(m_it);
+				return true;
+			}
+		}
+
+	return false;
 }

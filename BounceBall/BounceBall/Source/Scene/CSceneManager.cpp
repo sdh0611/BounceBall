@@ -24,14 +24,14 @@ bool CSceneManager::Init(Types::SceneType type) {
 	return true;
 }
 
-void CSceneManager::Update()
+void CSceneManager::Update(const double& deltaTime)
 {
-	m_pScene->Update();
+	m_pScene->Update(deltaTime);
 }
 
-void CSceneManager::Render()
+void CSceneManager::Render(const HDC& hDC)
 {
-	m_pScene->Render();
+	m_pScene->Render(hDC);
 }
 
 bool CSceneManager::CreateScene(Types::SceneType type)

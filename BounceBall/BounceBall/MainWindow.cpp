@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "MainWindow.h"
 #include "Include\Scene\CSceneManager.h"
+#include "Include\Core\Timer.h"
 
 
 MainWindow::MainWindow(): 
-	m_pSceneManager(nullptr) {
+	m_pSceneManager(nullptr), m_pTimer(nullptr) {
 
 }
 
@@ -24,6 +25,13 @@ bool MainWindow::Init(HINSTANCE hInstance, UINT width, UINT height)
 	if (!InitWndClass())
 		return false;
 
+	m_hDC = GetDC(m_hWnd);
+
+	m_pTimer = std::make_unique<Timer>();
+
+	if (!m_pTimer->Init())
+		return false;
+
 	if (m_pSceneManager == nullptr)
 		m_pSceneManager = CSceneManager::GetInstance();
 
@@ -36,22 +44,27 @@ bool MainWindow::Init(HINSTANCE hInstance, UINT width, UINT height)
 }
 
 
+//deltaTime ±¸ÇöÇØ¾ßµÊ(5.22)
 void MainWindow::Update()
 {
-	m_pSceneManager->Update();
+	m_pTimer->Update();
+
+	m_pSceneManager->Update((double)m_pTimer->GetDeltaTime());
+
 
 
 }
 
 void MainWindow::Render()
 {
-	m_pSceneManager->Render();
-
+	m_pSceneManager->Render(m_hDC);
+	
 
 }
 
 void MainWindow::GameLogic()
 {
+	
 	Update();
 	Render();
 }

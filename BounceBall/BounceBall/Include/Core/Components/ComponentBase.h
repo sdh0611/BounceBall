@@ -9,14 +9,13 @@ class CObject;
 class ComponentBase {
 
 public:
-	ComponentBase() = default;
-	virtual ~ComponentBase() = default;
+	ComponentBase(CObject* owner) : m_pOwner(owner) { };
+	virtual ~ComponentBase() { };
 
 	
 public:
 	virtual void Init() = 0;
-	virtual void Update() = 0;
-	virtual void Render() = 0;
+	virtual void Update(const double& deltaTime) = 0;
 
 
 public:
@@ -27,7 +26,8 @@ public:
 
 
 protected:
+	Types::Point				m_Point;
 	Types::tstring			m_strComponentTag;
-	class CObject*			m_pOwner;
+	CObject*					m_pOwner;
 
 };

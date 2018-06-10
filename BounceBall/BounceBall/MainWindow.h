@@ -1,7 +1,8 @@
 #pragma once
 
 #include "stdafx.h"
-#include ".\Include\Singleton.hpp"
+#include "Include\Singleton.hpp"
+
 
 
 class MainWindow : public Singleton<MainWindow>{
@@ -32,7 +33,10 @@ private:
 	HINSTANCE						m_hInstance;
 	HWND							m_hWnd;
 	HDC								m_hDC;
-	class CSceneManager*		m_pSceneManager;
+
+public:
+	std::unique_ptr<class Timer>		m_pTimer;
+	class CSceneManager*				m_pSceneManager;
 
 
 

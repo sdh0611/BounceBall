@@ -19,17 +19,23 @@
     <Filter Include="헤더 파일\Scene">
       <UniqueIdentifier>{ef38ccf4-d525-4526-bbed-e3a28d745949}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Object">
-      <UniqueIdentifier>{e94cce52-fdb6-416e-b45c-1fbd213ccafc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Core">
       <UniqueIdentifier>{a05c2044-6dc9-45c6-a234-ee7074666b32}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Object">
-      <UniqueIdentifier>{4953c835-c2a9-4b99-892e-b290a655f74c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Scene">
       <UniqueIdentifier>{d49b85de-6f8a-4d46-a28a-36ad3b86b9a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Scene\Object">
+      <UniqueIdentifier>{4953c835-c2a9-4b99-892e-b290a655f74c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Scene\Object">
+      <UniqueIdentifier>{e94cce52-fdb6-416e-b45c-1fbd213ccafc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Core\Component">
+      <UniqueIdentifier>{a8fa4f02-b914-4e07-98c3-043873ce1eeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Core\Component">
+      <UniqueIdentifier>{11beca8c-254c-4864-abb4-67170987463d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -58,10 +64,37 @@
       <Filter>헤더 파일\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Include\Scene\Object\CObject.h">
-      <Filter>헤더 파일\Object</Filter>
+      <Filter>헤더 파일\Scene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Core\Components\Collider.h">
+      <Filter>헤더 파일\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Core\Components\ColliderBox.h">
+      <Filter>헤더 파일\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Core\Components\InputComponent.h">
+      <Filter>헤더 파일\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Core\Components\PhysicsComponent.h">
+      <Filter>헤더 파일\Core\Component</Filter>
     </ClInclude>
     <ClInclude Include="Include\Core\Components\ComponentBase.h">
+      <Filter>헤더 파일\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Core\CollisionDetector.h">
       <Filter>헤더 파일\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Core\Timer.h">
+      <Filter>헤더 파일\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Core\Debuging\Debug.h">
+      <Filter>헤더 파일\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Scene\Object\CPlayer.h">
+      <Filter>헤더 파일\Scene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Scene\Object\CProbs.h">
+      <Filter>헤더 파일\Scene\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +110,6 @@
     <ClCompile Include="Source\Scene\CGameScene.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Scene\Object\CObject.cpp">
-      <Filter>소스 파일\Object</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Scene\CLayer.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
@@ -88,6 +118,36 @@
     </ClCompile>
     <ClCompile Include="Source\Scene\CSceneManager.cpp">
       <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Debuging\Debug.cpp">
+      <Filter>소스 파일\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\CollisionDetector.cpp">
+      <Filter>소스 파일\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Timer.cpp">
+      <Filter>소스 파일\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\Object\CPlayer.cpp">
+      <Filter>소스 파일\Scene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\Object\CProbs.cpp">
+      <Filter>소스 파일\Scene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\Object\CObject.cpp">
+      <Filter>소스 파일\Scene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Components\Collider.cpp">
+      <Filter>소스 파일\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Components\ColliderBox.cpp">
+      <Filter>소스 파일\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Components\PhysicsComponent.cpp">
+      <Filter>소스 파일\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Components\InputComponent.cpp">
+      <Filter>소스 파일\Core\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

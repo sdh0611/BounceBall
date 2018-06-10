@@ -12,8 +12,8 @@ class CSceneManager : public Singleton<CSceneManager> {
 
 public:
 	bool Init(Types::SceneType type);
-	void Update();
-	void Render();
+	void Update(const double& deltaTime);
+	void Render(const HDC& hDC);
 
 
 public:
