@@ -1,5 +1,6 @@
 #include "..\..\..\stdafx.h"
 #include "..\..\..\Include\Core\Components\ColliderBox.h"
+#include "..\..\..\Include\Core\Components\PhysicsComponent.h"
 #include "..\..\..\Include\Scene\Object\CObject.h"
 
 
@@ -51,3 +52,40 @@ void ColliderBox::Update(const double & deltaTime)
 	}
 	
 }
+
+//void ColliderBox::ResolveCollision(Types::ObjectType type, CollisionType collision)
+//{
+//
+//	switch (type) {
+//		//case Types::OT_ENEMY:
+//
+//		//	break;
+//	case Types::OT_PROBS:
+//		/*
+//		NOTE:
+//		PROBS Object의 옆면에 부딫힌거면 해당 방향으로의 이동을 무시하고, -> Object의 방향을 IDLE로 바꾸면됨.
+//		위아래로 부딫힌 경우 점프 동작에 영향력 행사.
+//		*/
+//		//if(m_pOwner->GetObjectPoint().x < )
+//		switch (collision) {
+//		case CollisionType::COLLSION_TOP:		//윗부분에 부딫힌 경우 중력 초기화
+//			PhysicsComponent * physics = static_cast<PhysicsComponent*>(
+//				m_pOwner->GetComponent(TEXT("PhysicsComponent")));
+//			physics->ResetJumpForce();
+//			break;
+//		case CollisionType::COLLSION_BOT:		//밑부분에 부딫힌 경우 Y축아래로 진행하게함.
+//
+//			break;
+//		case CollisionType::COLLSION_SIDE:		//옆면에 부딫힌 경우 X축상의 진행을 막음.
+//			
+//			break;
+//		}
+//		break;
+//		//case Types::OT_PICKUP:
+//
+//		//	break;
+//	}
+//
+//
+//
+//}

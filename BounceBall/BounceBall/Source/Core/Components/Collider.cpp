@@ -12,11 +12,12 @@ Collider::Collider(CObject* owner, ColliderType type)
 
 Collider::~Collider()
 {
-	//Debug::MessageInfo(TEXT("Bos Destruct"));
+	//Debug::MessageInfo(TEXT("Box Destruct"));
 }
 
 //Collision을 일으킨 Object Type별로 행동 정의
-void Collider::ResolveCollision(Types::ObjectType type)
+//Collision의 유형에 따른 동작도 따로 정의해야함(18.07.04)
+void Collider::ResolveCollision(Types::ObjectType type, Collider::CollisionType collision)
 {
 
 	switch (type) {
@@ -24,9 +25,30 @@ void Collider::ResolveCollision(Types::ObjectType type)
 
 	//	break;
 	case Types::OT_PROBS:
-		PhysicsComponent * physics = static_cast<PhysicsComponent*>(
-			m_pOwner->GetComponent(TEXT("PhysicsComponent")));
-		physics->ResetJumpForce();
+		/*
+			NOTE:
+				PROBS Object의 옆면에 부딫힌거면 해당 방향으로의 이동을 무시하고,
+				위아래로 부딫힌 경우 점프 동작에 영향력 행사.
+		*/
+		Debug::MessageInfo(TEXT("Resolve"));
+		//if(m_pOwner->GetObjectPoint().x < )
+		switch (collision) {
+		case CollisionType::COLLISION_TOP:		//윗부분에 부딫힌 경우 중력 초기화
+			{
+				PhysicsComponent * physics = static_cast<PhysicsComponent*>(
+					m_pOwner->GetComponent(TEXT("PhysicsComponent")));
+				physics->ResetJumpForce();
+				Debug::MessageInfo(TEXT("TOP"));
+			}
+			break;
+		//case CollisionType::COLLISION_BOT:		//밑부분에 부딫힌 경우 Y축아래로 진행하게함.
+
+		//	break;
+		case CollisionType::COLLISION_SIDE:		//옆면에 부딫힌 경우 X축상의 진행을 막음.
+			m_pOwner->SetObjectDirection(Types::DIR_IDLE);
+			Debug::MessageInfo(TEXT("SIDE"));
+			break;
+		}
 		break;
 	//case Types::OT_PICKUP:
 

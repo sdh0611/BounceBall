@@ -38,8 +38,9 @@ void PhysicsComponent::Move(const double& deltaTime)
 		if (m_pOwner->GetObjectPoint().x < 700)
 			m_pOwner->SetObjectPointX(m_pOwner->GetObjectPoint().x + m_fSpeed * deltaTime);
 		break;
-		 
+	//case Types::DIR_IDLE:
 
+	//	break;
 	}
 
 }

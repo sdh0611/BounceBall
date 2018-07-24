@@ -15,7 +15,7 @@ public:
 public:
 	virtual void Init() override;
 	virtual void Update(const double& deltaTime) override;
-
+	//virtual void ResolveCollision(Types::ObjectType type, CollisionType collision) override;
 
 public:
 	const Types::Rect& GetBoxSize() const { return m_BoxSize; }

@@ -41,11 +41,11 @@ public:
 protected:
 	Types::ObjectType						m_ObjectType;
 	Types::ObjectState						m_ObjectState;
-	Types::Direction						m_ObjectDirection;
+	Types::Direction							m_ObjectDirection;
 	Types::Point								m_fObjectPoint;
 	typedef std::unordered_map<Types::tstring, ComponentBase*> ComponentTable;
 	ComponentTable						m_ComponentTable;
-	ComponentTable::iterator			m_it;
+	ComponentTable::iterator				m_it;
 
 
 };

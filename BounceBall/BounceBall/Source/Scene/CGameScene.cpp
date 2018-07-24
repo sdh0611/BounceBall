@@ -75,7 +75,7 @@ void CGameScene::Render(const HDC& hDC)
 //Player와 Enemy
 //Player와 Probs
 //Enemy와 Probs
-//일단 하드코딩허자..
+//일단 하드코딩
 //Player가 Probs와 충돌할 경우 바닥이면 계속 튀기고,
 //옆면과 충돌한거면 진행을 막아야함.
 //충돌했을 때 충돌한 Object에 대한 정보도 넘겨줘야한다.
@@ -89,10 +89,10 @@ void CGameScene::CollisionDetect()
 			if ( ((*m_it)->GetLayerTag() == TEXT("Background")) || ((*m_it)->GetLayerTag() == TEXT("Player")) )
 				continue;
 
-			for ( auto& value : ((*m_it)->GetObjectList()) ) {
+			for ( auto& object : ((*m_it)->GetObjectList()) ) {
 				//m_pCollisionDetector->Update( static_cast<Collider*>(value->GetComponent(TEXT("Collider"))), 
 				//	static_cast<Collider*>( (*it)->GetComponent(TEXT("Collider")) ) );
-				m_pCollisionDetector->Update(value, (*it));
+				m_pCollisionDetector->Update((*it), object); //it : player
 
 			}
 		}

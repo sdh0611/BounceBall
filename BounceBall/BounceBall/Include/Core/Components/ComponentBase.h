@@ -27,7 +27,7 @@ public:
 
 protected:
 	Types::Point				m_Point;
-	Types::tstring			m_strComponentTag;
+	Types::tstring				m_strComponentTag;
 	CObject*					m_pOwner;
 
 };

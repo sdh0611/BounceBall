@@ -3,10 +3,11 @@
 #include "..\..\..\stdafx.h"
 #include "..\Components\ComponentBase.h"
 #include "Collider.h"
-
+#include "ColliderBox.h"
 
 class PhysicsComponent :public ComponentBase {
-	friend void Collider::ResolveCollision(Types::ObjectType type);
+	friend void Collider::ResolveCollision(Types::ObjectType type, Collider::CollisionType collision);
+	friend void ColliderBox::ResolveCollision(Types::ObjectType type, Collider::CollisionType collision);
 
 public:
 	PhysicsComponent(CObject* owner);
@@ -29,7 +30,14 @@ public:
 private:
 	void Move(const double& deltaTime);
 	void Gravity(const double& deltaTime);
+
+	
+private:
+	/*
+		NOTE:	컴포넌트간의 상호작용을 위해 정의한 메소드들
+	*/
 	void ResetJumpForce() { m_fJumpForce = -350.f; }
+	
 
 
 private:

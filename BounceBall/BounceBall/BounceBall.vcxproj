@@ -145,6 +145,7 @@
     <ClInclude Include="Include\Core\Components\ComponentBase.h" />
     <ClInclude Include="Include\Core\Components\InputComponent.h" />
     <ClInclude Include="Include\Core\Components\PhysicsComponent.h" />
+    <ClInclude Include="Include\Core\Components\TriggerBox.h" />
     <ClInclude Include="Include\Core\Debuging\Debug.h" />
     <ClInclude Include="Include\Core\Timer.h" />
     <ClInclude Include="Include\Scene\CGameScene.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="Source\Core\Components\ColliderBox.cpp" />
     <ClCompile Include="Source\Core\Components\InputComponent.cpp" />
     <ClCompile Include="Source\Core\Components\PhysicsComponent.cpp" />
+    <ClCompile Include="Source\Core\Components\TriggerBox.cpp" />
     <ClCompile Include="Source\Core\Debuging\Debug.cpp" />
     <ClCompile Include="Source\Core\Timer.cpp" />
     <ClCompile Include="Source\Scene\CGameScene.cpp" />
